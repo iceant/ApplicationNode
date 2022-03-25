@@ -1,0 +1,9 @@
+POST http://localhost:8080/api/Menu
+Content-Type: application/json
+
+{
+  "name": "测试菜单",
+  "description": "测试描述",
+  "path": "/path",
+  "icon": "TEST_ICON"
+}

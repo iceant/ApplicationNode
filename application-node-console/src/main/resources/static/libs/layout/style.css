@@ -1,0 +1,10 @@
+.el-header{
+    background-color: black;
+    color: white;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+.el-aside{
+    background-color: white;
+}

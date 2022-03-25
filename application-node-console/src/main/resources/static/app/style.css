@@ -1,0 +1,32 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.ml-2{
+    margin-left: 2px !important;
+}
+
+.mr-2{
+    margin-right: 2px !important;
+}
+
+.mb-2{
+    margin-bottom: 2px !important;
+}
+
+.mt-2{
+    margin-top: 2px !important;
+}
+
+.pl-1{
+    padding-left: 1em !important;
+}
+
+.pl-2{
+    padding-left: 2em !important;
+}
+
+.pl-3{
+    padding-left: 3em !important;
+}

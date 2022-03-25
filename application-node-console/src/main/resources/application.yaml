@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:sqlite:./meta.db
+  sql:
+    init:
+      mode: always
+      schema-locations:
+        - classpath:sql/schema.sql
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    generator:
+      write-numbers-as_strings: true
+    default-property-inclusion: non_empty
+
+mybatis-plus:
+  type-handlers-package: com.github.iceant.application.node.console.mybatis
+
+
+logging:
+  level:
+    org:
+      apache:
+        ibatis: DEBUG

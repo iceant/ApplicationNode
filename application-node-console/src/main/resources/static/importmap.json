@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "layout": "./libs/layout/main.js",
+    "layout/": "./libs/layout/"
+  }
+}

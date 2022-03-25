@@ -1,0 +1,6 @@
+logging:
+  level:
+    com:
+      baomidou:
+        mybatisplus:
+          generator: DEBUG
