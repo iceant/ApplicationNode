@@ -16,12 +16,11 @@ spring:
       write-numbers-as_strings: true
     default-property-inclusion: non_empty
 
-mybatis-plus:
-  type-handlers-package: com.github.iceant.application.node.console.mybatis
-
 
 logging:
   level:
     org:
       apache:
         ibatis: DEBUG
+      springframework:
+        transaction: DEBUG

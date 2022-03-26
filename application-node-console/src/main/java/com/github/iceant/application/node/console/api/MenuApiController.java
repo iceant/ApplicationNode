@@ -1,7 +1,7 @@
 package com.github.iceant.application.node.console.api;
 
 import com.github.iceant.application.node.console.dto.MenuDTO;
-import com.github.iceant.application.node.console.services.ApplicationService;
+import com.github.iceant.application.node.console.service.ApplicationService;
 import com.github.iceant.application.node.console.storage.entity.TMenu;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

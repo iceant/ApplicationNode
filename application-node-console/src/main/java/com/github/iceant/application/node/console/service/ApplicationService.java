@@ -1,4 +1,4 @@
-package com.github.iceant.application.node.console.services;
+package com.github.iceant.application.node.console.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.iceant.application.node.console.dto.MenuDTO;

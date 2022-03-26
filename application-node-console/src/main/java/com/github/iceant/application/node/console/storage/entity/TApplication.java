@@ -21,8 +21,8 @@ import com.github.iceant.application.node.console.mybatis.SqliteLocalDateTimeTyp
 @Getter
 @Setter
 @Accessors(chain = true)
-@TableName(value="t_menu", autoResultMap = true)
-public class TMenu implements Serializable {
+@TableName(value="t_application", autoResultMap = true)
+public class TApplication implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,14 +35,11 @@ public class TMenu implements Serializable {
     @TableField("description")
     private String description;
 
-    @TableField("path")
-    private String path;
-
     @TableField("icon")
     private String icon;
 
-    @TableField(value="creation_datetime", typeHandler=SqliteLocalDateTimeTypeHandler.class)
-    private LocalDateTime creationDatetime;
+    @TableField(value="create_datetime", typeHandler=SqliteLocalDateTimeTypeHandler.class)
+    private LocalDateTime createDatetime;
 
     public static final String ID = "id";
 
@@ -50,10 +47,8 @@ public class TMenu implements Serializable {
 
     public static final String DESCRIPTION = "description";
 
-    public static final String PATH = "path";
-
     public static final String ICON = "icon";
 
-    public static final String CREATION_DATETIME = "creation_datetime";
+    public static final String CREATE_DATETIME = "create_datetime";
 
 }

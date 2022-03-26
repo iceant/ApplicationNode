@@ -7,3 +7,12 @@ create table if not exists t_menu
     icon TEXT,
     creation_datetime DATETIME
 );
+
+create table if not exists t_application
+(
+    id BIGINT PRIMARY KEY ,
+    name TEXT,
+    description,
+    icon TEXT,
+    create_datetime DATETIME
+);
