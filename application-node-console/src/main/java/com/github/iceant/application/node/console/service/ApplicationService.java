@@ -2,8 +2,12 @@ package com.github.iceant.application.node.console.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.iceant.application.node.console.dto.MenuDTO;
+import com.github.iceant.application.node.console.dto.RoleDTO;
+import com.github.iceant.application.node.console.mappers.BizRoleMapper;
 import com.github.iceant.application.node.console.mappers.MenuMapper;
+import com.github.iceant.application.node.console.storage.entity.TBizRole;
 import com.github.iceant.application.node.console.storage.entity.TMenu;
+import com.github.iceant.application.node.console.storage.service.ITBizRoleService;
 import com.github.iceant.application.node.console.storage.service.ITMenuService;
 import com.github.iceant.application.node.console.utils.Snowflake;
 import lombok.extern.slf4j.Slf4j;
@@ -16,11 +20,13 @@ import java.util.List;
 @Slf4j
 public class ApplicationService {
 
-    final ITMenuService menuService;
     final Snowflake snowflake;
+    final ITMenuService menuService;
+    final ITBizRoleService roleService;
 
-    public ApplicationService(ITMenuService menuService) {
+    public ApplicationService(ITMenuService menuService, ITBizRoleService roleService) {
         this.menuService = menuService;
+        this.roleService = roleService;
         this.snowflake = new Snowflake();
     }
 
@@ -62,5 +68,23 @@ public class ApplicationService {
 
     public List<TMenu> listMenu(QueryWrapper<TMenu> query) {
         return menuService.list(query);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////
+    ////
+
+    public TBizRole createRole(RoleDTO dto) {
+        QueryWrapper<TBizRole> query = new QueryWrapper<>();
+        query.eq(TBizRole.NAME, dto.getName());
+
+        TBizRole role = roleService.getOne(query);
+        if(role!=null){
+            role = BizRoleMapper.INSTANCE.merge(dto, role);
+            roleService.updateById(role);
+        }else{
+            role = BizRoleMapper.INSTANCE.dtoToEntity(dto);
+            roleService.save(role);
+        }
+        return role;
     }
 }

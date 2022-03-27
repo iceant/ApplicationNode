@@ -18,3 +18,11 @@ create table if not exists t_application
     icon TEXT,
     create_datetime DATETIME
 );
+
+create table if not exists t_biz_role
+(
+  id BIGINT PRIMARY KEY ,
+  name TEXT,
+  description TEXT,
+  creation_datetime DATETIME
+);

@@ -1,4 +1,4 @@
-System.register(['./template.html', './style.css'], function(_e){
+System.register(['./template.html', './style.css'], function(_e, _c){
     var html;
     return{
       setters:[
@@ -26,6 +26,10 @@ System.register(['./template.html', './style.css'], function(_e){
                           if(item.id===id){
                               return item;
                           }
+                          for(var i in item.children){
+                              var child = item.children[i];
+                              if(child.id===id) return child;
+                          }
                       }
                   },
                   handleOpen(id){
@@ -38,9 +42,14 @@ System.register(['./template.html', './style.css'], function(_e){
                   handleClose(){
                       console.log('close', arguments);
                   },
-                  handleItemClick(){
-                      console.log(arguments);
-                      this.$router.push({path: '/about', query:{message:arguments}});
+                  handleItemClick(item){
+                      var self = this;
+                      var id = item.index;
+                      var menu = this.getMenu(id);
+                      _c.import('..'+menu.path+'/main.js').then(function(m){
+                          self.$router.addRoute({path:menu.path, component:m});
+                          self.$router.push({path: menu.path});
+                      });
                   }
               }
           });
