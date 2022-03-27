@@ -16,7 +16,6 @@ System.register(['./template.html', './style.css'], function(_e, _c){
                   var self = this;
                   axios.get('/Menu/firstLevel').then(function(resp){
                       self.menus = resp.data.result;
-                      console.log(self.menus);
                   });
               },
               methods:{

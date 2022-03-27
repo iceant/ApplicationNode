@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -86,5 +87,16 @@ public class ApplicationService {
             roleService.save(role);
         }
         return role;
+    }
+
+    public List<TBizRole> listAllRoles() {
+        List<TBizRole> list = roleService.list();
+        list.sort(new Comparator<TBizRole>() {
+            @Override
+            public int compare(TBizRole o1, TBizRole o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        return list;
     }
 }

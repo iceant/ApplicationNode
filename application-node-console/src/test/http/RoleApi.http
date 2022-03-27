@@ -1,0 +1,9 @@
+POST http://localhost:8080/api/Role
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Administrator",
+  "description": "Administrator Role",
+  "creationDatetime": "2022-03-27T19:57:23.234"
+}

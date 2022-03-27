@@ -4,7 +4,18 @@ System.register(['./template.html'], function(_e){
       setters:[function(_){html=_.default;}],
       execute(){
           _e({
-              template: html
+              template: html,
+              data(){
+                  return {
+                      roles:[]
+                  }
+              },
+              mounted(){
+                  var self = this;
+                  axios.get('/Role').then(function(res){
+                      self.roles=res.data.result;
+                  });
+              }
           });
       }
     };

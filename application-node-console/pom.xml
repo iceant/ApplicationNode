@@ -95,12 +95,17 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <compilerArgs>--enable-preview</compilerArgs>
+<!--                    <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${org.projectlombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
                         </path>
                         <path>
                             <groupId>org.mapstruct</groupId>

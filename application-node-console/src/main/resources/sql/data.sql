@@ -11,3 +11,5 @@ INSERT INTO t_menu (id, parent_id, name, description, path, icon, creation_datet
 INSERT INTO t_menu (id, parent_id, name, description, path, icon, creation_datetime, ordinal) VALUES (11, 8, '交互视图', '交互视图配置', '/app/ux', 'icon-ux.png', CURRENT_TIMESTAMP, 11);
 INSERT INTO t_menu (id, parent_id, name, description, path, icon, creation_datetime, ordinal) VALUES (12, 8, '交互视流', '交互视流配置', '/app/viewflow', 'icon-viewflow.png', CURRENT_TIMESTAMP, 12);
 
+
+INSERT INTO t_biz_role(id, name, description, creation_datetime) VALUES (1, 'Administrator', 'Administrator Role', '2022-03-27 20:05:12');

@@ -10,5 +10,6 @@ import java.time.LocalDateTime;
 public class RoleDTO {
     Long id;
     String name;
-    LocalDateTime createDateTime;
+    String description;
+    LocalDateTime creationDatetime;
 }
