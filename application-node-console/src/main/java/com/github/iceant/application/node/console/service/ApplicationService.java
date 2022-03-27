@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -53,5 +54,13 @@ public class ApplicationService {
         menu = MenuMapper.INSTANCE.mergeWithDTO(dto, menu);
         menuService.updateById(menu);
         return menu;
+    }
+
+    public List<TMenu> listAll() {
+        return menuService.list();
+    }
+
+    public List<TMenu> listMenu(QueryWrapper<TMenu> query) {
+        return menuService.list(query);
     }
 }

@@ -11,11 +11,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 @MappedJdbcTypes(JdbcType.VARCHAR)
 @MappedTypes(LocalDateTime.class)
 public class SqliteLocalDateTimeTypeHandler extends BaseTypeHandler<LocalDateTime> {
     static final String PATTERN = "yyyy-MM-dd HH:mm:ss.SSS";
+    static final String PATTERN_SIMPLE = "yyyy-MM-dd HH:mm:ss";
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, LocalDateTime parameter, JdbcType jdbcType) throws SQLException {
         String value = parameter.format(DateTimeFormatter.ofPattern(PATTERN));
@@ -24,7 +26,12 @@ public class SqliteLocalDateTimeTypeHandler extends BaseTypeHandler<LocalDateTim
 
     @Override
     public LocalDateTime getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        return LocalDateTime.parse(rs.getString(columnName), DateTimeFormatter.ofPattern(PATTERN));
+        String value = rs.getString(columnName);
+        try {
+            return LocalDateTime.parse(value, DateTimeFormatter.ofPattern(PATTERN));
+        }catch (DateTimeParseException e){
+            return LocalDateTime.parse(value, DateTimeFormatter.ofPattern(PATTERN_SIMPLE));
+        }
     }
 
     @Override

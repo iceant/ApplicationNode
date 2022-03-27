@@ -7,28 +7,40 @@ System.register(['./template.html', './style.css'], function(_e){
       execute:function(){
           _e({
               template:html,
+              data(){
+                  return {
+                      menus:[]
+                  };
+              },
               mounted(){
-                  this.$router.addRoute({path:'/about', component:{
-                          template:'<h1>{{message}}</h1>',
-                          mounted(){
-                              this.message = this.$route.query.message;
-                          },
-                          updated(){
-                            this.message = this.$route.query.message;
-                          }
-                      }
+                  var self = this;
+                  axios.get('/Menu/firstLevel').then(function(resp){
+                      self.menus = resp.data.result;
+                      console.log(self.menus);
                   });
               },
               methods:{
-                  handleOpen(){
-                      this.$router.push({path: '/about', query:{message:new Date()}});
+                  getMenu(id){
+                      for(var k in this.menus){
+                          var item = this.menus[k];
+                          if(item.id===id){
+                              return item;
+                          }
+                      }
+                  },
+                  handleOpen(id){
+                      var self = this;
+                      axios.get('/Menu/'+id+'/children').then(function(res){
+                          var menu = self.getMenu(id);
+                          menu.children = res.data.result;
+                      });
                   },
                   handleClose(){
-                      this.$router.push({path: '/about', query:{message:new Date()}});
+                      console.log('close', arguments);
                   },
-                  handleClick(){
+                  handleItemClick(){
                       console.log(arguments);
-                      this.$router.push({path: '/about', query:{message:new Date()}});
+                      this.$router.push({path: '/about', query:{message:arguments}});
                   }
               }
           });

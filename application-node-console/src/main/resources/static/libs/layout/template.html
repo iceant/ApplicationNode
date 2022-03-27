@@ -2,27 +2,24 @@
     <el-container>
         <el-header>应用配置器</el-header>
         <el-container>
-            <el-aside width="500px">
+            <el-aside width="450px">
                 <el-row>
                     <el-col :span="12">
                         <el-menu
                                 default-active="1-1"
                                 @open="handleOpen"
-                                @close="handleClose">
-                            <el-sub-menu index="1">
+                                @close="handleClose" v-for="menu in menus">
+                            <el-sub-menu :index="menu.id">
                                 <template #title>
-                                    <el-icon><CoffeeCup /></el-icon>
-                                    <span>应用</span>
+                                    <el-icon><component :is="menu.icon"></component></el-icon>
+                                    <span>{{menu.name}}</span>
                                 </template>
-                                <el-icon></el-icon>
-                                <el-menu-item index="1-1">
-                                    <el-icon><Plus/></el-icon>
-                                    <span>新增应用</span>
-                                </el-menu-item>
-                                <el-menu-item index="1-1">
-                                    <el-icon><Grid/></el-icon>
-                                    <span>应用管理</span>
-                                </el-menu-item>
+                                <template v-for="item in menu.children">
+                                    <el-menu-item :index="item.id" @click="handleItemClick">
+                                        <el-icon><component :is="item.icon"></component></el-icon>
+                                        <span>{{item.name}}</span>
+                                    </el-menu-item>
+                                </template>
                             </el-sub-menu>
                         </el-menu>
                     </el-col>
