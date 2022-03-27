@@ -29,4 +29,10 @@ public class RoleApiController {
         List<TBizRole> roles = applicationService.listAllRoles();
         return ApiResponse.ok(roles);
     }
+
+    @DeleteMapping(path = {"/{id}"})
+    public Object deleteById(@PathVariable("id") Long id){
+        Boolean result = applicationService.deleteRoleById(id);
+        return ApiResponse.ok(result);
+    }
 }

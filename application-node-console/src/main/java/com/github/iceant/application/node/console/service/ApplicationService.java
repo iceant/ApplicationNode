@@ -84,6 +84,8 @@ public class ApplicationService {
             roleService.updateById(role);
         }else{
             role = BizRoleMapper.INSTANCE.dtoToEntity(dto);
+            role.setId(snowflake.nextId());
+            role.setCreationDatetime(LocalDateTime.now());
             roleService.save(role);
         }
         return role;
@@ -98,5 +100,9 @@ public class ApplicationService {
             }
         });
         return list;
+    }
+
+    public boolean deleteRoleById(Long id) {
+        return roleService.removeById(id);
     }
 }

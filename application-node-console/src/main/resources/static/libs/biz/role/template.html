@@ -1,3 +1,39 @@
-<div v-for="item in roles">
-    <li>{{item.id}} - {{item.name}}</li>
-</div>
+<el-button type="primary" icon="Plus" @click.prevent="dialog = true">新增</el-button>
+<el-table :data="roles" style="width:100%">
+    <el-table-column prop="id" label="编号" />
+    <el-table-column prop="name" label="名称"/>
+    <el-table-column fixed="right" label="操作" width="120">
+        <template #default="scope">
+            <el-button
+                    type="text"
+                    size="small"
+                    @click.prevent="handleDeleteRow(scope.row.id)"
+            >
+                删除
+            </el-button>
+        </template>
+    </el-table-column>
+</el-table>
+
+<el-drawer v-model="dialog"
+           title="新增角色"
+           direction="rtl"
+           size="50%"
+           ref="addRoleFormDrawer"
+>
+    <el-form v-model="addRoleForm" :rules="addRoleFormRules" ref="addRoleFormRef">
+        <el-form-item prop="name" label="名称" :label-width="formLabelWidth">
+            <el-input v-model="addRoleForm.name" autocomplete="off" />
+        </el-form-item>
+        <el-form-item label="描述" :label-width="formLabelWidth">
+            <el-input
+                    v-model="addRoleForm.description"
+                    :autosize="{ minRows: 2, maxRows: 4 }"
+                    type="textarea"
+                    placeholder="请输入描述"
+            />
+        </el-form-item>
+        <el-button type="primary" style="width:100%" @click="handleSubmit">提交</el-button>
+    </el-form>
+
+</el-drawer>
