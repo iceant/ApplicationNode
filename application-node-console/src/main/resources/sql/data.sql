@@ -13,3 +13,12 @@ INSERT INTO t_menu (id, parent_id, name, description, path, icon, creation_datet
 
 
 INSERT INTO t_biz_role(id, name, description, creation_datetime) VALUES (1, 'Administrator', 'Administrator Role', '2022-03-27 20:05:12');
+
+INSERT INTO t_logic_type(id, name, description, creation_datetime) VALUES (1, 'STRING', '{"zh_CN":"字符串"}', current_timestamp);
+INSERT INTO t_logic_type(id, name, description, creation_datetime) VALUES (2, 'INTEGER', '{"zh_CN":"整数"}', current_timestamp);
+INSERT INTO t_logic_type(id, name, description, creation_datetime) VALUES (3, 'DECIMAL', '{"zh_CN":"小数"}', current_timestamp);
+INSERT INTO t_logic_type(id, name, description, creation_datetime) VALUES (4, 'BOOLEAN', '{"zh_CN":"布尔"}', current_timestamp);
+INSERT INTO t_logic_type(id, name, description, creation_datetime) VALUES (5, 'ARRAY', '{"zh_CN":"数组"}', current_timestamp);
+INSERT INTO t_logic_type(id, name, description, creation_datetime) VALUES (6, 'OBJECT', '{"zh_CN":"对象"}', current_timestamp);
+
+
